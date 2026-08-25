@@ -17,7 +17,7 @@ import shutil
 
 # Load dataset
 print("Loading dataset...")
-df = pd.read_csv("D:\DINESH KUMAR K\8-CAI-01\Project\Datasets\phishing_final.csv")
+df = pd.read_csv(r"phishing_final.csv")
 
 # Define new feature extraction logic (assuming 'url' column does NOT exist, we build a fake one)
 df['constructed_url'] = 'http://example.com/' + df['domaininsubdomains'].astype(str)  # TEMP placeholder
