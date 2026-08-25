@@ -80,13 +80,16 @@ st.subheader("📊 Live Detection Dashboard")
 phishing_count = st.session_state.results.count(1)
 legit_count = st.session_state.results.count(0)
 
-fig, ax = plt.subplots()
-ax.pie([phishing_count, legit_count],
-       labels=['Phishing', 'Legitimate'],
-       colors=['#ff4b4b', '#4bb543'],
-       autopct='%1.1f%%', startangle=140)
-ax.axis("equal")
-st.pyplot(fig)
+if len(st.session_state.results) > 0:
+    fig, ax = plt.subplots()
+    ax.pie([phishing_count, legit_count],
+           labels=['Phishing', 'Legitimate'],
+           colors=['#ff4b4b', '#4bb543'],
+           autopct='%1.1f%%', startangle=140)
+    ax.axis("equal")
+    st.pyplot(fig)
+else:
+    st.info("No URLs tested yet — enter a URL above or upload a CSV to populate the dashboard.")
 
 st.metric("Total URLs Tested", len(st.session_state.results))
 st.metric("Phishing Detected", phishing_count)
