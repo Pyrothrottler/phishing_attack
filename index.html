@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔐 Phishing Attack Detection — ML Project</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --red: #ef4444;
+    --green: #22c55e;
+    --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding-bottom: 4rem;
+  }
+  header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+  }
+  header h1 { font-size: 2.4rem; margin-bottom: 0.6rem; letter-spacing: -0.5px; }
+  header p { color: var(--muted); font-size: 1.1rem; max-width: 640px; margin: 0 auto; }
+  .badges { margin-top: 1.2rem; display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+  .badge {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+  .badge.green { color: var(--green); border-color: #14532d; }
+  .badge.red { color: var(--red); border-color: #7f1d1d; }
+  main { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.6rem 1.8rem;
+    margin-top: 1.6rem;
+  }
+  h2 { font-size: 1.3rem; margin-bottom: 0.9rem; }
+  h2 .emoji { margin-right: 0.4rem; }
+  ul { list-style: none; }
+  li { padding: 0.35rem 0; color: var(--text); }
+  li::before { content: "▹"; color: var(--blue); margin-right: 0.6rem; }
+  code {
+    background: #0f172a;
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #93c5fd;
+    font-family: 'Cascadia Code', Consolas, monospace;
+  }
+  pre {
+    background: #0f172a;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    overflow-x: auto;
+    margin-top: 0.6rem;
+  }
+  pre code { background: none; border: none; padding: 0; color: #a5f3fc; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 0.6rem; }
+  .metric { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; text-align: center; }
+  .metric .value { font-size: 1.7rem; font-weight: 700; color: #60a5fa; }
+  .metric .label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+  a { color: #60a5fa; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 3rem; padding: 0 1rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🔐 Phishing Attack Detection</h1>
+  <p>Machine learning project that detects phishing vs. legitimate URLs using combined UCI &amp; Kaggle datasets, URL feature engineering, and an interactive Streamlit dashboard.</p>
+  <div class="badges">
+    <span class="badge">Python</span>
+    <span class="badge">scikit-learn</span>
+    <span class="badge">Streamlit</span>
+    <span class="badge">Pandas</span>
+    <span class="badge green">Random Forest</span>
+    <span class="badge red">Phishing Detection</span>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>📊 Model Performance</h2>
+    <div class="grid">
+      <div class="metric"><div class="value">99.71%</div><div class="label">Random Forest Accuracy</div></div>
+      <div class="metric"><div class="value">98.98%</div><div class="label">Logistic Regression Accuracy</div></div>
+      <div class="metric"><div class="value">54,220</div><div class="label">Training Samples</div></div>
+      <div class="metric"><div class="value">78</div><div class="label">Features</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📂 Repository Contents</h2>
+    <ul>
+      <li><code>Phishing_project_CSE_35.py</code> — Main training script (loads ARFF + CSV, trains &amp; evaluates both models, saves <code>phishing_detector.pkl</code>)</li>
+      <li><code>retrain_with_url_features.py</code> — Retrains a URL-feature model and saves <code>phishing_detector2.pkl</code></li>
+      <li><code>phishing_web_app_dashboard_v2.py</code> — Interactive Streamlit web app with live detection dashboard &amp; batch CSV upload</li>
+      <li><code>Training Dataset.arff</code> — UCI phishing dataset (ARFF format)</li>
+      <li><code>phishing_final.csv</code> — Merged &amp; standardized combined dataset (54,220 × 79)</li>
+      <li><code>phishing_detector.pkl</code> / <code>phishing_detector2.pkl</code> — Trained models</li>
+    </ul>
+  </section>
+  <section>
+    <h2>🚀 Getting Started</h2>
+    <p>Clone the repository:</p>
+    <pre><code>git clone https://github.com/Pyrothrottler/phishing_attack.git
+cd phishing_attack</code></pre>
+    <p style="margin-top: 1rem;">Install dependencies:</p>
+    <pre><code>pip install pandas numpy scipy scikit-learn joblib matplotlib streamlit</code></pre>
+    <p style="margin-top: 1rem;">Train the models:</p>
+    <pre><code>python Phishing_project_CSE_35.py
+python retrain_with_url_features.py</code></pre>
+    <p style="margin-top: 1rem;">Launch the web app:</p>
+    <pre><code>streamlit run phishing_web_app_dashboard_v2.py</code></pre>
+  </section>
+
+  <section>
+    <h2>🧠 How It Works</h2>
+    <ul>
+      <li><strong>Data:</strong> Merges the UCI Phishing Dataset (ARFF, ~30 heuristic features) with a Kaggle URL-feature dataset, standardizing column names and converting labels to binary (0 = Legitimate, 1 = Phishing).</li>
+      <li><strong>Feature Engineering:</strong> Extracts URL characteristics such as length, dot/dash counts, subdomain depth, suspicious TLDs, login keywords, HTTPS presence, and more.</li>
+      <li><strong>Models:</strong> Logistic Regression and Random Forest classifiers are trained and evaluated on accuracy, precision, recall, and F1-score.</li>
+      <li><strong>Deployment:</strong> The best model powers a Streamlit dashboard where users can test single URLs in real time or upload a CSV for batch prediction, complete with a live phishing/legitimate pie-chart dashboard.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  View on GitHub: <a href="https://github.com/Pyrothrottler/phishing_attack">github.com/Pyrothrottler/phishing_attack</a> &nbsp;·&nbsp; Built with ❤️ &amp; scikit-learn
+</footer>
+
+</body>
+</html>
